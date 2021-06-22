@@ -78,21 +78,28 @@ public class RenumerationDialog extends javax.swing.JDialog {
         typeRenumerationController = new TypeRenumerationController();
         renumerationAccessoireController = new RenumerationAccessoireController();
         RenumerationAccessoire renum = renumerationAccessoireController.getRenumeration(id_renumeration_accessoire);
-        id_personnels.add(renum.getId_personnel());
+        try {
+            id_personnels.add(renum.getId_personnel());
+        } catch (Exception e) {
+        }
         initComponents();
         initCBPersonnel();
         initCBAnnee();
         initCBMois();
         initCBTypeRenumeration();
-        rSComboMetro_annee.setSelectedItem(anneeController.getAnnee(renum.getId_annee()).getLibelle());
-        rSComboMetro_mois.setSelectedItem(moisController.getMois(renum.getId_mois()).getLibelle());
-        rSComboMetro_personnels.removeAllItems();
-        rSComboMetro_personnels.addItem(personnelController.getPersonnel(renum.getId_personnel()).getNom_prenom());
-        rSComboMetro_type_renumeration.setSelectedItem(typeRenumerationController.getType(renum.getId_type()).getLibelle());
-        rSMTextFull_montant.setText("" + renum.getMontant());
-        jTextPane_description.setText(renum.getDescription());
-        jCheckBox_est_permanante.setSelected(renum.isEst_permanante());
-        jCheckBox_imposable.setSelected(renum.isEst_imposable());
+        try {
+            rSComboMetro_annee.setSelectedItem(anneeController.getAnnee(renum.getId_annee()).getLibelle());
+            rSComboMetro_mois.setSelectedItem(moisController.getMois(renum.getId_mois()).getLibelle());
+            rSComboMetro_personnels.removeAllItems();
+            rSComboMetro_personnels.addItem(personnelController.getPersonnel(renum.getId_personnel()).getNom_prenom());
+            rSComboMetro_type_renumeration.setSelectedItem(typeRenumerationController.getType(renum.getId_type()).getLibelle());
+            rSMTextFull_montant.setText("" + renum.getMontant());
+            jTextPane_description.setText(renum.getDescription());
+            jCheckBox_est_permanante.setSelected(renum.isEst_permanante());
+            jCheckBox_imposable.setSelected(renum.isEst_imposable());
+        } catch (Exception e) {
+        }
+        
     }
 
     /**
