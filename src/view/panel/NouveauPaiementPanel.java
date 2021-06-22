@@ -16,6 +16,7 @@ import controller.AnneeController;
 import controller.AvantageEnNatureController;
 import controller.ImpotDuController;
 import controller.MoisController;
+import controller.PaiementController;
 import controller.PersonnelController;
 import controller.RenumerationAccessoireController;
 import database.ConnecterDB;
@@ -52,6 +53,7 @@ public class NouveauPaiementPanel extends javax.swing.JPanel {
         abattementController = new AbattementController();
         avantageEnNatureController = new AvantageEnNatureController();
         impotDuController = new ImpotDuController();
+        paiementController = new PaiementController();
         initComponents();
         initCBAnee();
         initCBMois();
@@ -78,7 +80,7 @@ public class NouveauPaiementPanel extends javax.swing.JPanel {
         rSComboMetro_annee = new rojerusan.RSComboMetro();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_renumeration = new javax.swing.JTable();
+        jTable_paiement = new javax.swing.JTable();
         rSButtonRiple_modifier_supprimer = new rojeru_san.RSButtonRiple();
         rSComboMetro_mois = new rojerusan.RSComboMetro();
         rSButton1 = new rojeru_san.RSButton();
@@ -101,7 +103,7 @@ public class NouveauPaiementPanel extends javax.swing.JPanel {
 
         rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/ressources/bo.jpg"))); // NOI18N
 
-        rSButtonRiple_ajouter.setText("Mettre à jour");
+        rSButtonRiple_ajouter.setText("Payer et archiver");
         rSButtonRiple_ajouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSButtonRiple_ajouterActionPerformed(evt);
@@ -136,7 +138,7 @@ public class NouveauPaiementPanel extends javax.swing.JPanel {
             }
         });
 
-        jTable_renumeration.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_paiement.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -147,43 +149,43 @@ public class NouveauPaiementPanel extends javax.swing.JPanel {
                 "N°", "NOM ET PRENOM", "ANNEE", "MOIS", "SALAIRE DE BASE", "RBG", "RBGI", "CNSS 5,25", "RNI", "PRIME NON IMPOSABLE", "PRIME IMPOSABLE", "ABAT-PRO", "ABAT CHARGE FAMILIAL", "BASE CALCUL UTS", "IUTS", "ID", "NET A PAYER"
             }
         ));
-        jTable_renumeration.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable_paiement.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTable_renumerationMouseReleased(evt);
+                jTable_paiementMouseReleased(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable_renumeration);
-        if (jTable_renumeration.getColumnModel().getColumnCount() > 0) {
-            jTable_renumeration.getColumnModel().getColumn(0).setMinWidth(35);
-            jTable_renumeration.getColumnModel().getColumn(0).setPreferredWidth(35);
-            jTable_renumeration.getColumnModel().getColumn(0).setMaxWidth(35);
-            jTable_renumeration.getColumnModel().getColumn(2).setMinWidth(90);
-            jTable_renumeration.getColumnModel().getColumn(2).setPreferredWidth(100);
-            jTable_renumeration.getColumnModel().getColumn(2).setMaxWidth(110);
-            jTable_renumeration.getColumnModel().getColumn(3).setMinWidth(120);
-            jTable_renumeration.getColumnModel().getColumn(3).setPreferredWidth(130);
-            jTable_renumeration.getColumnModel().getColumn(3).setMaxWidth(160);
-            jTable_renumeration.getColumnModel().getColumn(4).setMinWidth(120);
-            jTable_renumeration.getColumnModel().getColumn(4).setPreferredWidth(130);
-            jTable_renumeration.getColumnModel().getColumn(4).setMaxWidth(160);
-            jTable_renumeration.getColumnModel().getColumn(5).setMinWidth(120);
-            jTable_renumeration.getColumnModel().getColumn(5).setPreferredWidth(130);
-            jTable_renumeration.getColumnModel().getColumn(5).setMaxWidth(160);
-            jTable_renumeration.getColumnModel().getColumn(6).setMinWidth(120);
-            jTable_renumeration.getColumnModel().getColumn(6).setPreferredWidth(130);
-            jTable_renumeration.getColumnModel().getColumn(6).setMaxWidth(160);
-            jTable_renumeration.getColumnModel().getColumn(8).setMinWidth(120);
-            jTable_renumeration.getColumnModel().getColumn(8).setPreferredWidth(130);
-            jTable_renumeration.getColumnModel().getColumn(8).setMaxWidth(160);
-            jTable_renumeration.getColumnModel().getColumn(14).setMinWidth(120);
-            jTable_renumeration.getColumnModel().getColumn(14).setPreferredWidth(130);
-            jTable_renumeration.getColumnModel().getColumn(14).setMaxWidth(160);
-            jTable_renumeration.getColumnModel().getColumn(15).setMinWidth(5);
-            jTable_renumeration.getColumnModel().getColumn(15).setPreferredWidth(5);
-            jTable_renumeration.getColumnModel().getColumn(15).setMaxWidth(5);
-            jTable_renumeration.getColumnModel().getColumn(16).setMinWidth(150);
-            jTable_renumeration.getColumnModel().getColumn(16).setPreferredWidth(150);
-            jTable_renumeration.getColumnModel().getColumn(16).setMaxWidth(150);
+        jScrollPane1.setViewportView(jTable_paiement);
+        if (jTable_paiement.getColumnModel().getColumnCount() > 0) {
+            jTable_paiement.getColumnModel().getColumn(0).setMinWidth(35);
+            jTable_paiement.getColumnModel().getColumn(0).setPreferredWidth(35);
+            jTable_paiement.getColumnModel().getColumn(0).setMaxWidth(35);
+            jTable_paiement.getColumnModel().getColumn(2).setMinWidth(90);
+            jTable_paiement.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTable_paiement.getColumnModel().getColumn(2).setMaxWidth(110);
+            jTable_paiement.getColumnModel().getColumn(3).setMinWidth(120);
+            jTable_paiement.getColumnModel().getColumn(3).setPreferredWidth(130);
+            jTable_paiement.getColumnModel().getColumn(3).setMaxWidth(160);
+            jTable_paiement.getColumnModel().getColumn(4).setMinWidth(120);
+            jTable_paiement.getColumnModel().getColumn(4).setPreferredWidth(130);
+            jTable_paiement.getColumnModel().getColumn(4).setMaxWidth(160);
+            jTable_paiement.getColumnModel().getColumn(5).setMinWidth(120);
+            jTable_paiement.getColumnModel().getColumn(5).setPreferredWidth(130);
+            jTable_paiement.getColumnModel().getColumn(5).setMaxWidth(160);
+            jTable_paiement.getColumnModel().getColumn(6).setMinWidth(120);
+            jTable_paiement.getColumnModel().getColumn(6).setPreferredWidth(130);
+            jTable_paiement.getColumnModel().getColumn(6).setMaxWidth(160);
+            jTable_paiement.getColumnModel().getColumn(8).setMinWidth(120);
+            jTable_paiement.getColumnModel().getColumn(8).setPreferredWidth(130);
+            jTable_paiement.getColumnModel().getColumn(8).setMaxWidth(160);
+            jTable_paiement.getColumnModel().getColumn(14).setMinWidth(120);
+            jTable_paiement.getColumnModel().getColumn(14).setPreferredWidth(130);
+            jTable_paiement.getColumnModel().getColumn(14).setMaxWidth(160);
+            jTable_paiement.getColumnModel().getColumn(15).setMinWidth(5);
+            jTable_paiement.getColumnModel().getColumn(15).setPreferredWidth(5);
+            jTable_paiement.getColumnModel().getColumn(15).setMaxWidth(5);
+            jTable_paiement.getColumnModel().getColumn(16).setMinWidth(150);
+            jTable_paiement.getColumnModel().getColumn(16).setPreferredWidth(150);
+            jTable_paiement.getColumnModel().getColumn(16).setMaxWidth(150);
         }
 
         rSButtonRiple_modifier_supprimer.setText("Supprimer");
@@ -218,7 +220,7 @@ public class NouveauPaiementPanel extends javax.swing.JPanel {
                         .addComponent(rSMTextFull_rechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rSButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(201, 201, 201)
+                        .addGap(18, 18, 18)
                         .addComponent(rSButtonRiple_modifier_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(rSButtonRiple_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -237,23 +239,19 @@ public class NouveauPaiementPanel extends javax.swing.JPanel {
             rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rSPanelImage1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(rSPanelImage1Layout.createSequentialGroup()
-                        .addGroup(rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rSComboMetro_annee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(rSComboMetro_mois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rSMTextFull_rechercher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rSButtonRiple_modifier_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rSButtonRiple_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rSPanelImage1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(rSButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rSComboMetro_annee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(rSComboMetro_mois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rSMTextFull_rechercher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rSButtonRiple_modifier_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rSButtonRiple_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rSButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -270,23 +268,46 @@ public class NouveauPaiementPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menu_item_payerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_payerActionPerformed
-        updateRenumeration();
+        updatePaiement();
     }//GEN-LAST:event_menu_item_payerActionPerformed
 
     private void menu_item_annuler_paiementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_annuler_paiementActionPerformed
-        removeRenumeration();
+        removePaiement();
     }//GEN-LAST:event_menu_item_annuler_paiementActionPerformed
 
     private void rSButtonRiple_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonRiple_ajouterActionPerformed
-        if(rSButtonRiple_ajouter.getText().equals("Ajouter")){
-            //
+        if(rSButtonRiple_ajouter.getText().equals("Payer et archiver")){
+            int[] rows = jTable_paiement.getSelectedRows();
+            for(int i = 0; i < rows.length; i++){
+                paiement(
+                        (int)jTable_paiement.getValueAt(i, 19),
+                        anneeController.getAnnee(jTable_paiement.getValueAt(i, 2).toString()).getId(),
+                        moisController.getMois(jTable_paiement.getValueAt(i, 3).toString()).getId(),
+                        (int)jTable_paiement.getValueAt(i, 4),
+                        (int)jTable_paiement.getValueAt(i, 5),
+                        (int)jTable_paiement.getValueAt(i, 7),
+                        (int)jTable_paiement.getValueAt(i, 8),
+                        (int)jTable_paiement.getValueAt(i, 9),
+                        (int)jTable_paiement.getValueAt(i, 10),
+                        (int)jTable_paiement.getValueAt(i, 11),
+                        (int)jTable_paiement.getValueAt(i, 12),
+                        (int)jTable_paiement.getValueAt(i, 13),
+                        (int)jTable_paiement.getValueAt(i, 14),
+                        (int)jTable_paiement.getValueAt(i, 15),
+                        (int)jTable_paiement.getValueAt(i, 16),
+                        (int)jTable_paiement.getValueAt(i, 17),
+                        (int)jTable_paiement.getValueAt(i, 18)
+                );
+            }
+            JOptionPane.showMessageDialog(this," Operation(s) effectuée(s) avec success", "Réussie !",JOptionPane.INFORMATION_MESSAGE);
+            
         }else{
-            updateRenumeration();
+            updatePaiement();
         }
     }//GEN-LAST:event_rSButtonRiple_ajouterActionPerformed
 
     private void rSButtonRiple_modifier_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonRiple_modifier_supprimerActionPerformed
-        removeRenumeration();
+        removePaiement();
     }//GEN-LAST:event_rSButtonRiple_modifier_supprimerActionPerformed
 
     private void rSComboMetro_anneeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSComboMetro_anneeActionPerformed
@@ -309,24 +330,24 @@ public class NouveauPaiementPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jScrollPane1MouseReleased
 
-    private void jTable_renumerationMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_renumerationMouseReleased
+    private void jTable_paiementMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_paiementMouseReleased
         popupAction(evt);
         if(evt.isPopupTrigger() && evt.getComponent() instanceof JTable){
             popup.show(evt.getComponent(), evt.getX(), evt.getY());
             popup.setVisible(true);
         }
-    }//GEN-LAST:event_jTable_renumerationMouseReleased
+    }//GEN-LAST:event_jTable_paiementMouseReleased
 
     private void rSButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButton1ActionPerformed
-ConnecterDB cbd = new ConnecterDB();
+        ConnecterDB cbd = new ConnecterDB();
         try{
             HashMap<String, Object> m = new HashMap<String, Object>(); 
 //      Map m=new HashMap();
       String reports="src\\report\\bulletin_salaire.jrxml";
       
-      JasperReport jr=JasperCompileManager.compileReport(reports);
-      JasperPrint jp=JasperFillManager.fillReport(jr, m, cbd.connection);
-      JasperViewer.viewReport(jp, false);
+            JasperReport jr=JasperCompileManager.compileReport(reports);
+            JasperPrint jp=JasperFillManager.fillReport(jr, m, cbd.connection);
+            JasperViewer.viewReport(jp, false);
          
      }catch(Exception ex){
          JOptionPane.showMessageDialog(this," Echec d'impression du Rélévé de note" +ex);
@@ -340,11 +361,12 @@ ConnecterDB cbd = new ConnecterDB();
     private final AbattementController abattementController;
     private final AvantageEnNatureController avantageEnNatureController;
     private final ImpotDuController impotDuController;
+    private final PaiementController paiementController;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_renumeration;
+    private javax.swing.JTable jTable_paiement;
     private javax.swing.JMenuItem menu_item_annuler_paiement;
     private javax.swing.JMenuItem menu_item_payer;
     private javax.swing.JPopupMenu popup;
@@ -365,7 +387,7 @@ ConnecterDB cbd = new ConnecterDB();
 //        }else{
 //            jTable_renumeration.clearSelection();
 //        }
-        int index = jTable_renumeration.getSelectedRow();
+        int index = jTable_paiement.getSelectedRow();
         if(index < 0){
             menu_item_annuler_paiement.setEnabled(false);
             menu_item_payer.setEnabled(false);
@@ -376,20 +398,20 @@ ConnecterDB cbd = new ConnecterDB();
             initUpdate();
         }
     }
-    private void updateRenumeration() {
-        int row = jTable_renumeration.getSelectedRow();
+    private void updatePaiement() {
+        int row = jTable_paiement.getSelectedRow();
         if(row < 0){
             return;
         }
-        int id_renumeration = Integer.parseInt(jTable_renumeration.getValueAt(row, 9).toString());
+        int id_renumeration = Integer.parseInt(jTable_paiement.getValueAt(row, 9).toString());
         RenumerationDialog renumerationDialog = new RenumerationDialog(null, true, id_renumeration);
         renumerationDialog.setVisible(true);
         initTable();
     }
-    private void removeRenumeration() {
-        int choice = JOptionPane.showConfirmDialog(this, "Etes vous sure de vouloir supprimer cette rénumeration de " + jTable_renumeration.getValueAt(jTable_renumeration.getSelectedRow(), 1) + " ?", "Action irréversible", JOptionPane.YES_NO_OPTION);
+    private void removePaiement() {
+        int choice = JOptionPane.showConfirmDialog(this, "Etes vous sure de vouloir supprimer cet paiement de " + jTable_paiement.getValueAt(jTable_paiement.getSelectedRow(), 1) + " ?", "Action irréversible", JOptionPane.YES_NO_OPTION);
         if(choice == 0){
-            renumerationAccessoireController.removeRenumeration(Integer.parseInt(jTable_renumeration.getValueAt(jTable_renumeration.getSelectedRow(), 9).toString()));
+            renumerationAccessoireController.removeRenumeration(Integer.parseInt(jTable_paiement.getValueAt(jTable_paiement.getSelectedRow(), 9).toString()));
         }
         initTable();
     }
@@ -422,26 +444,14 @@ ConnecterDB cbd = new ConnecterDB();
         DefaultTableModel dt = new DefaultTableModel(null,entete);
         dt.setRowCount(0);
         
-        String annee = "", mois = "";// rechercher = null;
+        String annee = "", mois = "";
         if(rSComboMetro_annee.getSelectedIndex() > -1){
             annee = rSComboMetro_annee.getSelectedItem().toString();
         }
         if(rSComboMetro_mois.getSelectedIndex() > -1){
             mois = rSComboMetro_mois.getSelectedItem().toString();
         }
-//        
-//        if(rSMTextFull_rechercher.getText().length() > 0){
-//            rechercher = rSMTextFull_rechercher.getText();
-//        }
-//        int id_annee = 0, id_mois = 0;
-//        Annee an = anneeController.getAnnee(annee); 
-//        if(an != null){
-//            id_annee = an.getId();
-//        }
-//        Mois m = moisController.getMois(mois);
-//        if(m != null){
-//            id_mois = m.getId();
-//        }
+        
         ArrayList<Personnel> list_personnel = personnelController.getPersonnels();
         int somme_salaire_brut = 0, somme_cnss_employeur = 0, somme_rbg = 0, somme_rbgi = 0, somme_iuts = 0, somme_anpe = 0, somme_imposable = 0, somme_non_imposable = 0, somme_caisse = 0,somme_allocation=0, somme_abattement_pro = 0, somme_base_calcul_iuts = 0, somme_base_arrondie = 0, somme_abattement_famil = 0, somme_net_a_payer = 0;
         for(int i = 0; i< list_personnel.size(); i++){
@@ -453,12 +463,18 @@ ConnecterDB cbd = new ConnecterDB();
             int salaire_base = list_personnel.get(i).getSalaire();
             int prime_non_impo = (int) calcul_prime_non_imposable(list_personnel.get(i).getId());
             int prime_impo = (int) calcul_prime_imposable(list_personnel.get(i).getId());
-            int salaire_indemite = salaire_base + prime_impo+prime_non_impo;
+            int salaire_indemite = salaire_base + prime_impo + prime_non_impo;
             int caisse_employer = (int) ((salaire_indemite * 5.25) / 100);
-            int rbg = salaire_indemite-caisse_employer;
+            int rbg = salaire_indemite - caisse_employer;
             int rbgi = rbg - (rbg*13/100);
             int caisse_employeur = (int) ((rbgi * 16.4) / 100);
-            int abattement_pro = (int) ((rbgi - caisse_employer) * abattementController.getAbattement(list_personnel.get(i).getId()).getCharge_professionnelle() / 100);
+            int abattement_pro;
+            try {
+                abattement_pro = (int) ((rbgi - caisse_employer) * abattementController.getAbattement(list_personnel.get(i).getId()).getCharge_professionnelle() / 100);
+
+            } catch (Exception e) {
+                abattement_pro = 0;
+            }
             colonne[4] = salaire_base;
             somme_salaire_brut += list_personnel.get(i).getSalaire();
             
@@ -484,22 +500,27 @@ ConnecterDB cbd = new ConnecterDB();
             colonne[12] = abattement_pro;
             somme_abattement_pro += abattement_pro;
             int base_arrondie = (rbgi / 1000) * 1000;
-            int abattement_famil = (int) ((base_arrondie * abattementController.getAbattement(list_personnel.get(i)).getCharge_familiale() / 100));
-            int base_calcule_iuts = (base_arrondie-abattement_famil);
+            int abattement_famil;
+            try {
+                abattement_famil = (int) ((base_arrondie * abattementController.getAbattement(list_personnel.get(i)).getCharge_familiale() / 100));
+            } catch (Exception e) {
+                abattement_famil = 0;
+            }
+            int base_calcule_iuts = (base_arrondie - abattement_famil);
             colonne[13] = base_calcule_iuts;
             somme_base_calcul_iuts += base_calcule_iuts;
             colonne[14] = base_arrondie;
             somme_base_arrondie += base_arrondie;
             colonne[15] = abattement_famil;
             int allocation_famille = (int) (1500 * personnelController.getPersonnel(list_personnel.get(i).getId()).getCharge());
-            somme_allocation+=allocation_famille;
+            somme_allocation += allocation_famille;
             colonne[16] = allocation_famille;
-            somme_abattement_famil+=allocation_famille;
+            somme_abattement_famil += allocation_famille;
             somme_abattement_famil += abattement_famil;
             int iuts = getIuts(abattement_famil);
             colonne[17] = iuts;
             somme_iuts += iuts;
-            int net_a_payer = rbg - caisse_employer -iuts+allocation_famille;
+            int net_a_payer = rbg - caisse_employer - iuts + allocation_famille;
             colonne[18] = net_a_payer;
             somme_net_a_payer += net_a_payer;
             colonne[19] = list_personnel.get(i).getId();
@@ -553,105 +574,105 @@ ConnecterDB cbd = new ConnecterDB();
         colonne[18] = somme_net_a_payer;
         colonne[19] = "";
         dt.addRow(colonne);
-        this.jTable_renumeration.setModel(dt);
-        if (jTable_renumeration.getColumnModel().getColumnCount() > 0) {
-            jTable_renumeration.getColumnModel().getColumn(0).setMinWidth(35);
-            jTable_renumeration.getColumnModel().getColumn(0).setPreferredWidth(35);
-            jTable_renumeration.getColumnModel().getColumn(0).setMaxWidth(35);
+        this.jTable_paiement.setModel(dt);
+        if (jTable_paiement.getColumnModel().getColumnCount() > 0) {
+            jTable_paiement.getColumnModel().getColumn(0).setMinWidth(35);
+            jTable_paiement.getColumnModel().getColumn(0).setPreferredWidth(35);
+            jTable_paiement.getColumnModel().getColumn(0).setMaxWidth(35);
             
-            jTable_renumeration.getColumnModel().getColumn(1).setMinWidth(230);
-            jTable_renumeration.getColumnModel().getColumn(1).setPreferredWidth(230);
-            jTable_renumeration.getColumnModel().getColumn(1).setMaxWidth(230);
+            jTable_paiement.getColumnModel().getColumn(1).setMinWidth(230);
+            jTable_paiement.getColumnModel().getColumn(1).setPreferredWidth(230);
+            jTable_paiement.getColumnModel().getColumn(1).setMaxWidth(230);
             
-            jTable_renumeration.getColumnModel().getColumn(2).setMinWidth(90);
-            jTable_renumeration.getColumnModel().getColumn(2).setPreferredWidth(90);
-            jTable_renumeration.getColumnModel().getColumn(2).setMaxWidth(90);
-            jTable_renumeration.getColumnModel().getColumn(3).setMinWidth(90);
-            jTable_renumeration.getColumnModel().getColumn(3).setPreferredWidth(90);
-            jTable_renumeration.getColumnModel().getColumn(3).setMaxWidth(90);
-            jTable_renumeration.getColumnModel().getColumn(4).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(2).setMinWidth(90);
+            jTable_paiement.getColumnModel().getColumn(2).setPreferredWidth(90);
+            jTable_paiement.getColumnModel().getColumn(2).setMaxWidth(90);
+            jTable_paiement.getColumnModel().getColumn(3).setMinWidth(90);
+            jTable_paiement.getColumnModel().getColumn(3).setPreferredWidth(90);
+            jTable_paiement.getColumnModel().getColumn(3).setMaxWidth(90);
+            jTable_paiement.getColumnModel().getColumn(4).setCellRenderer(NumberRenderer.get_FCFA_render());
             int taille = 160;
-            jTable_renumeration.getColumnModel().getColumn(4).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(4).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(4).setMaxWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(5).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(5).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(5).setMaxWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(6).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(6).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(6).setMaxWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(7).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(7).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(7).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(4).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(4).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(4).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(5).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(5).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(5).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(6).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(6).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(6).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(7).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(7).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(7).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(8).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(8).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(8).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(8).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(8).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(8).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(8).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(8).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(9).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(9).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(9).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(9).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(9).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(9).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(10).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(10).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(10).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(10).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(10).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(10).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(11).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(11).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(11).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(11).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(11).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(11).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(11).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(11).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(12).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(12).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(12).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(12).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(12).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(12).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(13).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(13).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(13).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(13).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(13).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(13).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(13).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(13).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(14).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(14).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(14).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(14).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(14).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(14).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(14).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(14).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(15).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(15).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(15).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(15).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(15).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(15).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(15).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(15).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(16).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(16).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(16).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(16).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(16).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(16).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(16).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(16).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(17).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(17).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(17).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(17).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(17).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(17).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(17).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(17).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(18).setCellRenderer(NumberRenderer.get_FCFA_render());
-            jTable_renumeration.getColumnModel().getColumn(18).setMinWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(18).setPreferredWidth(taille);
-            jTable_renumeration.getColumnModel().getColumn(18).setMaxWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(18).setCellRenderer(NumberRenderer.get_FCFA_render());
+            jTable_paiement.getColumnModel().getColumn(18).setMinWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(18).setPreferredWidth(taille);
+            jTable_paiement.getColumnModel().getColumn(18).setMaxWidth(taille);
             
-            jTable_renumeration.getColumnModel().getColumn(19).setMinWidth(5);
-            jTable_renumeration.getColumnModel().getColumn(19).setPreferredWidth(5);
-            jTable_renumeration.getColumnModel().getColumn(19).setMaxWidth(5);
+            jTable_paiement.getColumnModel().getColumn(19).setMinWidth(5);
+            jTable_paiement.getColumnModel().getColumn(19).setPreferredWidth(5);
+            jTable_paiement.getColumnModel().getColumn(19).setMaxWidth(5);
             
-            jTable_renumeration.setRowHeight(30);
-            jTable_renumeration.getTableHeader().setBackground(new Color(0,112,192));
-            jTable_renumeration.getTableHeader().setForeground(Color.white);
-            jTable_renumeration.getTableHeader().setFont(new Font("Cambria Math", Font.BOLD, 13));
-            jTable_renumeration.setFont(new Font("Cambria Math", Font.BOLD, 12));
-            jTable_renumeration.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            jTable_paiement.setRowHeight(30);
+            jTable_paiement.getTableHeader().setBackground(new Color(0,112,192));
+            jTable_paiement.getTableHeader().setForeground(Color.white);
+            jTable_paiement.getTableHeader().setFont(new Font("Cambria Math", Font.BOLD, 13));
+            jTable_paiement.setFont(new Font("Cambria Math", Font.BOLD, 12));
+            jTable_paiement.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             //jTable_renumeration.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         }
     }
@@ -795,5 +816,9 @@ ConnecterDB cbd = new ConnecterDB();
             }
         }
         return somme;
+    }
+
+    private void paiement(int id_personnel, int id_annee, int id_mois, int prime_non_impo, int prime_impo, int rbg, int rbgi, int caisse_employer, int caisse_employeur, int anpe, int abattement_pro, int base_calcul_iuts, int base_arondi, int abattement_famil, int allocation_famille, int iuts, int net_a_payer) {
+        paiementController.addPaiement(id_personnel, id_annee, id_mois, prime_non_impo, prime_impo, rbg, rbgi, caisse_employer, caisse_employeur, anpe, abattement_pro, base_calcul_iuts, base_arondi, abattement_famil, allocation_famille, iuts, net_a_payer);
     }
 }
